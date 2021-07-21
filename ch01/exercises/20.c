@@ -9,21 +9,21 @@ main()
 
 void detab(int size)
 {
-    int c, i, j;
+    int c, j, col;
 
-    i = 0;
+    col = 1;
     while ((c = getchar()) != EOF) {
         if (c == '\t') {
-            for (j = (size - (i % size)); j > 0; --j) {
+            for (j = 0; j < (col - 1) % size; ++j) {
+                ++col;
                 putchar(' ');
-                ++i;
             }
         } else if (c == '\n') {
+            col = 1;
             putchar(c);
-            i = 0;
         } else {
+            ++col;
             putchar(c);
-            ++i;
         }
     }
 }
